@@ -1,13 +1,13 @@
 import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { MainPage } from 'components/Pages';
 
 function Router() {
     return(
         <BrowserRouter>
-            <Route path='/'>
-                <MainPage />
-            </Route>
+            <Routes>
+                <Route path='/' element={<MainPage />} />
+            </Routes>
         </BrowserRouter>
     )
 }
