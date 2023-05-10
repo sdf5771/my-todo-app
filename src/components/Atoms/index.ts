@@ -6,6 +6,8 @@ import Title from './Title';
 import Ul from './Ul';
 import Li from './Li';
 import Label from './Label';
+import UserLoginInput from './UserLoginInput'
+import MenuContainer from './MenuContainer'
 
 export default {
     Div,
@@ -16,4 +18,6 @@ export default {
     Ul,
     Li,
     Label,
+    UserLoginInput,
+    MenuContainer,
 }

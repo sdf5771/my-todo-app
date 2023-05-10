@@ -12,10 +12,10 @@ function ToodoForm(){
             minWidth="200px"
             maxWidth="300px"
             width="100%"
-            height="100%"
+            height="500px"
             padding="10px"
             >
-            <Atoms.Span fontSize="1.2rem">ToDos</Atoms.Span>
+            <Atoms.Span margin="10px 0" fontSize="1.2rem" fontWeight="700">ToDos</Atoms.Span>
 
             <Molecules.TodoCreateInput />
         </Atoms.Div>

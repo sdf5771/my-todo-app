@@ -7,7 +7,7 @@ import Atoms from 'components/Atoms';
 function NotFound(){
     const navigate = useNavigate();
     return(
-        <Atoms.Div display='flex' flexDirection='column' justifyContent='center' alignItems='center' width="100vw" height="100vh" backgroundColor="rgb(224, 224, 224)">
+        <Atoms.Div display='flex' flexDirection='column' justifyContent='center' alignItems='center' width="100vw" height="100vh">
             <Atoms.Div display="flex" justifyContent='center' width="100%">
                 <Atoms.Span fontSize="30px" fontWeight="700">404 Error, Not Found</Atoms.Span>
             </Atoms.Div>

@@ -1,4 +1,7 @@
+import Header from './Header'
+import Body from './Body'
 
-export {
-    
+export default {
+    Header,
+    Body,
 }
