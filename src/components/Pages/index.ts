@@ -1,3 +1,7 @@
 import MainPage from './Main'
+import NotFoundPage from './NotFound';
 
-export {MainPage};
+export {
+    MainPage,
+    NotFoundPage
+};
