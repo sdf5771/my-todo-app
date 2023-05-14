@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import { useNavigate } from 'react-router-dom';
 import Atoms from 'components/Atoms';
 import Lottie from 'lottie-react';
@@ -6,6 +6,7 @@ import { TodoMainImage } from 'assets/lotties';
 
 function LoginForm(){
     const navigate = useNavigate();
+    const btnRef = useRef<HTMLButtonElement>(null);
     const [inputValue, setInputValue] = useState('');
 
     const buttonOnClickHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -33,8 +34,14 @@ function LoginForm(){
                         placeholder='Your Name or Nick name'
                         value={inputValue}
                         onChange={(event:React.ChangeEvent<HTMLInputElement>) => setInputValue(event.target.value)}
+                        onKeyUp={(event:React.KeyboardEvent<HTMLInputElement>) => {
+                            if(btnRef && btnRef.current && event.code === 'Enter'){
+                                btnRef.current.click()
+                            }
+                        }}
                         />
                     <Atoms.Button 
+                        ref={btnRef}
                         width="410px" 
                         height="44px" 
                         borderRadius="4px" 

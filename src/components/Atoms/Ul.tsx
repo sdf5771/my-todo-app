@@ -16,11 +16,13 @@ export default styled.ul<CSSProperties>`
     right: ${({right}) => right};
     bottom: ${({bottom}) => bottom};
 
-    margin: ${({margin}) => margin};
-    padding: ${({padding}) => padding};
-
+    margin: ${({margin}) => margin ? margin : "0"};
+    padding: ${({padding}) => padding ? padding : "0"};
+    overflow: ${({overflow}) => overflow};
     width: ${({width}) => width};
     height: ${({height}) => height};
+    max-width: ${({maxWidth}) => maxWidth};
+    max-height: ${({maxHeight}) => maxHeight};
     border: ${({border}) => border};
     border-radius: ${({borderRadius}) => borderRadius};
     background-color: ${({backgroundColor}) => backgroundColor};

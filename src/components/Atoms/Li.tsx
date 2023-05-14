@@ -10,7 +10,7 @@ export default styled.li<React.CSSProperties>`
     ${({ flexWrap }) => flexWrap && `flex-wrap : ${flexWrap}`};
     ${({ flexShrink }) => flexShrink && `flex-shrink : ${flexShrink}`};
     ${({ alignItems }) => alignItems && `align-items : ${alignItems}`};
-
+    box-shadow: ${({boxShadow}) => boxShadow};
     position: ${({position}) => position};
     top: ${({top}) => top};
     left: ${({left}) => left};
