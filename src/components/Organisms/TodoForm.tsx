@@ -1,15 +1,17 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect} from 'react';
+import { useRecoilState } from 'recoil';
+import { todoState } from 'state';
 import Atoms from 'components/Atoms';
 import Molecules from 'components/Molecules';
 import {todoData} from 'types'
 import { useTodo } from 'hooks';
 
 function ToodoForm(){
-    const {getTodos} = useTodo();
-    const [todos, setTodos] = useState<todoData[] | null>(null);
+    const { getTodos } = useTodo()
+    const [todos, setTodos] = useRecoilState(todoState); 
 
     useEffect(() => {
-        setTodos(getTodos())
+        getTodos()
     }, [])
 
     return(
@@ -35,7 +37,7 @@ function ToodoForm(){
                 padding="0 0 20px 0" 
                 overflow='auto' 
                 gap="12px">
-                {todos && todos.length !== 0 ? todos.map((todo, index) => {
+                {todos && todos.length !== 0 ? todos.map((todo: todoData, index: number) => {
                     return <Molecules.TodoElement 
                                 key={todo.id} 
                                 id={todo.id} 

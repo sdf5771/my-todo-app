@@ -1,4 +1,6 @@
 import React from 'react';
+import { useRecoilState } from 'recoil';
+import { todoState } from 'state';
 import { todoData } from 'types';
 
 type TcreateTodo = {
@@ -11,6 +13,7 @@ type TdeleteTodo = {
 
 function useTodo(){
     const TODO_KEY = 'todos'
+    const [todos, setTodos] = useRecoilState(todoState);
 
     const createTodo = ({title}: TcreateTodo):void => {
         let prevData = localStorage.getItem(TODO_KEY);
@@ -38,6 +41,7 @@ function useTodo(){
 
             localStorage.setItem(TODO_KEY, JSON.stringify(newArr))
         }
+        getTodos()
     }
     
     const toggleStatus = ({id, status}: {id:number, status: "ready" | "complete"}): boolean => {
@@ -51,6 +55,7 @@ function useTodo(){
                     }
                 })
                 localStorage.setItem(TODO_KEY, JSON.stringify(parseData))
+                setTodos(parseData)
                 return true
             } else if(status === "complete"){
                 parseData.forEach((todo: todoData) => {
@@ -59,6 +64,7 @@ function useTodo(){
                     }
                 })
                 localStorage.setItem(TODO_KEY, JSON.stringify(parseData))
+                setTodos(parseData)
                 return true
             }
             return false
@@ -79,7 +85,7 @@ function useTodo(){
             })
 
             localStorage.setItem(TODO_KEY, JSON.stringify(result));
-
+            setTodos(result)
             return true    
         } 
         return false
@@ -88,9 +94,9 @@ function useTodo(){
     const getTodos = () => {
         let todos = localStorage.getItem(TODO_KEY)
 
-        if(!todos) return undefined
+        if(!todos) return
 
-        return JSON.parse(todos)
+        setTodos(JSON.parse(todos))
     }
     
     return {createTodo, toggleStatus, deleteTodo, getTodos}

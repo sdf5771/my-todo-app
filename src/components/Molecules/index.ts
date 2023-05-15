@@ -5,6 +5,7 @@ import HeaderUserInfo from "./HeaderUserInfo"
 import TodoElement from "./TodoElement"
 import TodoCompleteBtn from "./TodoCompleteBtn"
 import TodoEmpty from "./TodoEmpty"
+import OkCancelBtn from "./OkCancelBtn"
 
 export default{
     TodoCreateInput,
@@ -13,5 +14,6 @@ export default{
     HeaderUserInfo,
     TodoElement,
     TodoCompleteBtn,
-    TodoEmpty
+    TodoEmpty,
+    OkCancelBtn
 }
