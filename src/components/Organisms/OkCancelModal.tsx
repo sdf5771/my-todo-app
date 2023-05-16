@@ -1,10 +1,10 @@
 import React from 'react';
 import Atoms from 'components/Atoms';
 import Molecules from 'components/Molecules';
-import { ModalComplete, ModalError, ModalInfo } from 'assets/icons';
+import { ModalComplete, ModalError, ModalInfo, ModalAlert } from 'assets/icons';
 
 type TOkCancelModal = {
-    type: "complete" | "error" | "information" | undefined,
+    type: "complete" | "alert" | "error" | "information" | undefined,
     title: string | undefined,
     description: string | undefined,
     isUseCancel: boolean | undefined,
@@ -12,9 +12,11 @@ type TOkCancelModal = {
     cancelBtnClickHandler: React.MouseEventHandler<HTMLButtonElement> | undefined,
 }
 
-const returnIcon = (type: "complete" | "error" | "information" | undefined) => {
+const returnIcon = (type: "complete" | "alert" | "error" | "information" | undefined) => {
     if (type && type === "complete"){
         return ModalComplete
+    } else if(type && type === "alert") {
+        return ModalAlert
     } else if (type && type === "error"){
         return ModalError
     } else if (type && type === "information"){

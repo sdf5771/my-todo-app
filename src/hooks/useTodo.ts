@@ -80,7 +80,7 @@ function useTodo(){
         setOkCancelModalIsOpen({modalOpen: true})
         setOkCancelModalData(
             {
-                type: "error",
+                type: "alert",
                 title: "정말 삭제할까요?",
                 description: "삭제한 할 일은 복구할 수 없어요.",
                 isUseCancel: true,

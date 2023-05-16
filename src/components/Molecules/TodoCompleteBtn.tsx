@@ -1,18 +1,21 @@
 import React from 'react';
 import Atoms from 'components/Atoms';
 import { CheckImage } from 'assets/images'
-import { useTodo } from 'hooks';
+import { useTodo, useToastMsg } from 'hooks';
 
 function TodoCompleteBtn({id, status}: {id: number,status: "ready" | "complete"}){
     const {toggleStatus} = useTodo();
+    const {setToastOpen, setToastMsgData} = useToastMsg();
 
     const onClickHandler = (event: React.MouseEvent<HTMLDivElement>) => {
         let result = toggleStatus({id, status})
 
         if(result){
-            alert("상태가 변경되었습니다.")
+            setToastMsgData({type:"complete", title: "Complete", description: "성공적으로 할 일의 상태가 변경되었어요.", boxShadowColor: "complete"});
+            setToastOpen(2000);
         } else {
-            alert("상태 변경에 실패하였습니다.")
+            setToastMsgData({type:"error", title: "Error", description: "할 일의 상태 변경에 실패했어요.", boxShadowColor: "Error"});
+            setToastOpen(2000);
         }
     }
 
