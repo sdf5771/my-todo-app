@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
-const Div = styled.div<React.CSSProperties>`
+const Div = styled.div<React.CSSProperties & {
+    hoverBackgroundColor?: string,
+    hoverBorder?: string,
+}
+>`
     ${({display}) => display && `display : ${display}`};
 
     position: ${({position}) => position};
@@ -60,9 +64,15 @@ const Div = styled.div<React.CSSProperties>`
     z-index: ${({ zIndex }) => zIndex};
     animation: ${({ animation }) => animation};
     transform: ${({ transform }) => transform};
+    transition: ${({transition}) => transition};
     gap: ${({gap}) => gap};
 
     opacity: ${({opacity}) => opacity};
+
+    :hover {
+        background-color: ${({hoverBackgroundColor}) => hoverBackgroundColor};
+        border : ${({hoverBorder}) => hoverBorder}
+    }
 `
 
 export default Div;

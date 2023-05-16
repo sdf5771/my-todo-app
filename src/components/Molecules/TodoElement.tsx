@@ -28,7 +28,13 @@ function TodoElement({id, title, status, createDate, modifyDate, completeDate}: 
                     >{title}</Atoms.Span>
             </Atoms.Div>
             <Atoms.Div 
+                display="flex"
+                justifyContent='center'
+                alignItems='center'
                 cursor='pointer' 
+                borderRadius="4px"
+                hoverBackgroundColor="#eaeaea"
+                transition='0.4s ease'
                 onClick={(event: React.MouseEvent<HTMLDivElement>) => {
                     let deleteResult = deleteTodo({id: id});
                 }}>
