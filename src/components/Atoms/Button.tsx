@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 
-const Button = styled.button<React.CSSProperties>`
+const Button = styled.button<React.CSSProperties & {
+    hoverColor?: string,
+    hoverBackgroundColor?: string,
+    hoverBorder?: string,
+}
+>`
     display: ${({ display }) => display || 'inline-flex'};
     justify-content: ${({ justifyContent }) => justifyContent || 'center'};
     align-items: ${({ alignItems }) => alignItems || 'center'};
@@ -36,9 +41,17 @@ const Button = styled.button<React.CSSProperties>`
     cursor: pointer;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
+    transition: ${({transition}) => transition};
+
     :focus {
         outline: 0;
         -webkit-appearance: none;
+    }
+
+    :hover {
+        color : ${({hoverColor}) => hoverColor};
+        background-color: ${({hoverBackgroundColor}) => hoverBackgroundColor};
+        border : ${({hoverBorder}) => hoverBorder}
     }
 `
 

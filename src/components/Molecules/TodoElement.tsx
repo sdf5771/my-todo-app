@@ -6,7 +6,7 @@ import { CloseSmall } from 'assets/images'
 import { useTodo } from 'hooks';
 
 function TodoElement({id, title, status, createDate, modifyDate, completeDate}: todoData){
-    const {deleteTodo} = useTodo()
+    const {deleteTodo} = useTodo();
     return(
         <Atoms.Li 
             display='flex' 
@@ -31,7 +31,6 @@ function TodoElement({id, title, status, createDate, modifyDate, completeDate}: 
                 cursor='pointer' 
                 onClick={(event: React.MouseEvent<HTMLDivElement>) => {
                     let deleteResult = deleteTodo({id: id});
-                    console.log('deleteResult ', deleteResult);
                 }}>
                 <CloseSmall />
             </Atoms.Div>

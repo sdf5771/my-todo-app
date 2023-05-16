@@ -61,6 +61,8 @@ const Div = styled.div<React.CSSProperties>`
     animation: ${({ animation }) => animation};
     transform: ${({ transform }) => transform};
     gap: ${({gap}) => gap};
+
+    opacity: ${({opacity}) => opacity};
 `
 
 export default Div;

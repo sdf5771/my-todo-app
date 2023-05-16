@@ -1,9 +1,13 @@
 import React from 'react';
+import { useRecoilState } from 'recoil';
+import { okCancelModalIsOpenState ,okCancelModalDataState } from 'state';
 import Atoms from 'components/Atoms';
 import Organisms from 'components/Organisms';
 import Template from 'components/Template'
 
 function Main () {
+    const [okCancelModalIsOpen, setOkCancelModalIsOpen] = useRecoilState(okCancelModalIsOpenState);
+    const [okCancelModalData, setOkCancelModalData] = useRecoilState(okCancelModalDataState);
     return (
         <Atoms.Div display='flex' flexDirection='column' width="100vw" height="100vh">
             <Template.Header />
@@ -13,6 +17,16 @@ function Main () {
 
                 </Atoms.Div> */}
             </Atoms.Div>
+            {okCancelModalIsOpen && okCancelModalIsOpen.modalOpen 
+            ? <Organisms.OkCancelModal 
+                type={okCancelModalData.type === "complete" || okCancelModalData.type === "error" || okCancelModalData.type === "information" ? okCancelModalData.type : undefined}
+                title={okCancelModalData.title ? okCancelModalData.title : ""}
+                description={okCancelModalData.description ? okCancelModalData.description : ""}
+                isUseCancel={okCancelModalData.isUseCancel ? okCancelModalData.isUseCancel : false}
+                okBtnClickHandler={okCancelModalData.okBtnClickHandler ? okCancelModalData.okBtnClickHandler : undefined}
+                cancelBtnClickHandler={okCancelModalData.cancelBtnClickHandler ? okCancelModalData.cancelBtnClickHandler : undefined}
+                /> 
+            : null}
         </Atoms.Div>
     )
 }

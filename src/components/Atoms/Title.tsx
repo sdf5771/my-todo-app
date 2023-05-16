@@ -7,6 +7,7 @@ const Title = styled.h1<CSSProperties>`
     line-height: 32px;
     font-feature-settings: 'pnum' on, 'lnum' on;
     color: #2A3249;
+    margin: 0;
 `
 
 export default Title;

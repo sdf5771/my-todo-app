@@ -1,6 +1,6 @@
 import React from 'react';
 import { useRecoilState } from 'recoil';
-import { todoState } from 'state';
+import { todoState, okCancelModalIsOpenState, okCancelModalDataState } from 'state';
 import { todoData } from 'types';
 
 type TcreateTodo = {
@@ -14,6 +14,8 @@ type TdeleteTodo = {
 function useTodo(){
     const TODO_KEY = 'todos'
     const [todos, setTodos] = useRecoilState(todoState);
+    const [okCancelModalIsOpen, setOkCancelModalIsOpen] = useRecoilState(okCancelModalIsOpenState);
+    const [okCancelModalData, setOkCancelModalData] = useRecoilState(okCancelModalDataState);
 
     const createTodo = ({title}: TcreateTodo):void => {
         let prevData = localStorage.getItem(TODO_KEY);
@@ -74,21 +76,37 @@ function useTodo(){
 
     const deleteTodo = ({id}: TdeleteTodo):boolean => {
         let prevData = localStorage.getItem(TODO_KEY);
-        
-        if(prevData){
-            let parseData = JSON.parse(prevData);
+        let deleteResult = false
+        setOkCancelModalIsOpen({modalOpen: true})
+        setOkCancelModalData(
+            {
+                type: "error",
+                title: "정말 삭제할까요?",
+                description: "삭제한 할 일은 복구할 수 없어요.",
+                isUseCancel: true,
+                okBtnClickHandler: (event: React.MouseEvent<HTMLButtonElement>) => {
+                    if(prevData){
+                        let parseData = JSON.parse(prevData);
+                        
+                        let result = parseData.filter((todo:todoData) => {
+                            if(todo.id !== id){
+                                return todo
+                            }
+                        })
             
-            let result = parseData.filter((todo:todoData) => {
-                if(todo.id !== id){
-                    return todo
-                }
-            })
-
-            localStorage.setItem(TODO_KEY, JSON.stringify(result));
-            setTodos(result)
-            return true    
-        } 
-        return false
+                        localStorage.setItem(TODO_KEY, JSON.stringify(result));
+                        deleteResult = true
+                        setTodos(result)  
+                        setOkCancelModalIsOpen({modalOpen: false})
+                    } 
+                },
+                cancelBtnClickHandler: (event: React.MouseEvent<HTMLButtonElement>) => {
+                    setOkCancelModalIsOpen({modalOpen: false})
+                },
+            }
+        )
+        
+        return deleteResult
     }
 
     const getTodos = () => {
