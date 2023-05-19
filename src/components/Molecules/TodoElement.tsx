@@ -36,7 +36,7 @@ function TodoElement({id, title, status, createDate, modifyDate, completeDate}: 
                 hoverBackgroundColor="#eaeaea"
                 transition='0.4s ease'
                 onClick={(event: React.MouseEvent<HTMLDivElement>) => {
-                    let deleteResult = deleteTodo({id: id});
+                    deleteTodo({id: id});
                 }}>
                 <CloseSmall />
             </Atoms.Div>

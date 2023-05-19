@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled,{css} from 'styled-components';
 
 const Div = styled.div<React.CSSProperties & {
     hoverBackgroundColor?: string,
@@ -16,6 +16,8 @@ const Div = styled.div<React.CSSProperties & {
     flex-direction: ${({flexDirection}) => flexDirection};
     justify-content: ${({justifyContent}) => justifyContent};
     align-items: ${({alignItems}) => alignItems};
+    flex: ${({flex}) => flex};
+    flexGrow: ${({flexGrow}) => flexGrow};
     ${({ flexWrap }) => flexWrap && `flex-wrap : ${flexWrap}`};
     ${({ flexShrink }) => flexShrink && `flex-shrink : ${flexShrink}`};
     ${({ alignItems }) => alignItems && `align-items : ${alignItems}`};

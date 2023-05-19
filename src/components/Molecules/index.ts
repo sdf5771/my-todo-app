@@ -6,6 +6,7 @@ import TodoElement from "./TodoElement"
 import TodoCompleteBtn from "./TodoCompleteBtn"
 import TodoEmpty from "./TodoEmpty"
 import OkCancelBtn from "./OkCancelBtn"
+import TotalizationElement from './TotalizationElement'
 
 export default{
     TodoCreateInput,
@@ -15,5 +16,6 @@ export default{
     TodoElement,
     TodoCompleteBtn,
     TodoEmpty,
-    OkCancelBtn
+    OkCancelBtn,
+    TotalizationElement
 }

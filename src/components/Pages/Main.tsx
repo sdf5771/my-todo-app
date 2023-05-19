@@ -5,6 +5,7 @@ import { useToastMsg } from 'hooks';
 import Atoms from 'components/Atoms';
 import Organisms from 'components/Organisms';
 import Template from 'components/Template'
+import { fadeIn } from 'styles/keyframes';
 
 function Main () {
     const [okCancelModalIsOpen, setOkCancelModalIsOpen] = useRecoilState(okCancelModalIsOpenState);

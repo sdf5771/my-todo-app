@@ -105,19 +105,42 @@ function useTodo(){
                 },
             }
         )
-        
         return deleteResult
     }
 
     const getTodos = () => {
         let todos = localStorage.getItem(TODO_KEY)
-
         if(!todos) return
-
         setTodos(JSON.parse(todos))
     }
+
+    const getCount = ({todos, type}: {todos: todoData[], type: "total" | "ready" | "complete"}) => {
+        switch (type){
+            case "total":
+                return todos.length
+            case "ready":
+                return todos.filter(todo => {if(todo.status === "ready") return todo}).length
+            case "complete":
+                return todos.filter(todo => {if(todo.status === "complete") return todo}).length
+        }
+    }
+
+    const getTodosCount = () => {
+        let result = {
+            total: 0,
+            ready: 0,
+            complete: 0,
+        }
+        getTodos()
+
+        result.total = getCount({todos, type: "total"})
+        result.ready = getCount({todos, type: "ready"})
+        result.complete = getCount({todos, type: "complete"})
+        
+        return result;
+    }
     
-    return {createTodo, toggleStatus, deleteTodo, getTodos}
+    return {createTodo, toggleStatus, deleteTodo, getTodos, getTodosCount}
 }
 
-export default useTodo;
+export default useTodo; 
