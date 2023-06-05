@@ -4,6 +4,7 @@ import LoginForm from './LoginForm';
 import OkCancelModal from './OkCancelModal';
 import ToastMessage from './ToastMessage';
 import Totalization from './Totalization';
+import UserChart from './UserChart';
 
 export default {
     TodoForm,
@@ -11,5 +12,6 @@ export default {
     LoginForm,
     OkCancelModal,
     ToastMessage,
-    Totalization
+    Totalization,
+    UserChart
 };

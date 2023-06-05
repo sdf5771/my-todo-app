@@ -15,7 +15,6 @@ function Totalization(){
     useEffect(() => {
         setCountObj(getTodosCount())
     },[])
-    
     return (
         <Atoms.Div display="flex" width="calc(100% - 40px)" gap="20px" padding="20px">
             <Molecules.TotalizationElement icon={TodoAllIcon} title="Total" value={countObj.total.toString()} color='default'/>

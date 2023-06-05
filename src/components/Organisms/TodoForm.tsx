@@ -33,7 +33,6 @@ function ToodoForm(){
                 flexDirection='column' 
                 width="100%" 
                 height="calc(100% - 40px)" 
-                maxHeight="500px" 
                 padding="0 0 20px 0" 
                 overflow='auto' 
                 gap="12px">

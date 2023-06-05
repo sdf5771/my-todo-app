@@ -114,7 +114,9 @@ function useTodo(){
         setTodos(JSON.parse(todos))
     }
 
-    const getCount = ({todos, type}: {todos: todoData[], type: "total" | "ready" | "complete"}) => {
+    const getCount = ({type}: {type: "total" | "ready" | "complete"}) => {
+        if(!todos) return 0
+
         switch (type){
             case "total":
                 return todos.length
@@ -131,16 +133,15 @@ function useTodo(){
             ready: 0,
             complete: 0,
         }
-        getTodos()
 
-        result.total = getCount({todos, type: "total"})
-        result.ready = getCount({todos, type: "ready"})
-        result.complete = getCount({todos, type: "complete"})
+        result.total = getCount({type: "total"})
+        result.ready = getCount({type: "ready"})
+        result.complete = getCount({type: "complete"})
         
         return result;
     }
     
-    return {createTodo, toggleStatus, deleteTodo, getTodos, getTodosCount}
+    return { createTodo, toggleStatus, deleteTodo, getTodos, getTodosCount }
 }
 
 export default useTodo; 
