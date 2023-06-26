@@ -26,4 +26,5 @@ export default styled.li<React.CSSProperties>`
     border-radius: ${({borderRadius}) => borderRadius};
     background-color: ${({backgroundColor}) => backgroundColor};
     gap: ${({gap}) => gap};
+    transition: ${({transition}) => transition};
 `;

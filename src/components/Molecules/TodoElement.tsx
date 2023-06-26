@@ -11,12 +11,15 @@ function TodoElement({id, title, status, createDate, modifyDate, completeDate}: 
         <Atoms.Li 
             display='flex' 
             padding="12px" 
-            height="26px" 
-            border="2px solid #eaeaea" 
+            height={status === 'ready' ? "26px" : "28px"}
+            border={status === 'ready' ? "1px solid #eaeaea" : "0px"}
+            backgroundColor={status === 'ready' ? "" : "#AAA4DA"}
             borderRadius="8px"
-            boxShadow='0px 4px 4px rgba(51, 51, 51, 0.04), 0px 4px 16px rgba(51, 51, 51, 0.08)' 
+            // boxShadow='0px 4px 4px rgba(51, 51, 51, 0.04), 0px 4px 16px rgba(51, 51, 51, 0.08)' 
             justifyContent='space-between' 
-            alignItems='center'>
+            alignItems='center'
+            transition="background-color 0.4s ease"
+            >
             <Atoms.Div display='flex' gap="10px">
                 <Molecules.TodoCompleteBtn id={id} status={status} />
                 <Atoms.Span 
@@ -24,6 +27,7 @@ function TodoElement({id, title, status, createDate, modifyDate, completeDate}: 
                     fontWeight="400" 
                     fontSize="1rem" 
                     lineHeight="24px"
+                    color={status === 'ready' ? "" : "#ffffff"}
                     textDecoration={status === "complete" ? "line-through" : ""}
                     >{title}</Atoms.Span>
             </Atoms.Div>

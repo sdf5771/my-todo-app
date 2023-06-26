@@ -28,8 +28,8 @@ function TodoCompleteBtn({id, status}: {id: number,status: "ready" | "complete"}
             height="20px" 
             borderRadius="12px"
             cursor='pointer'
-            backgroundColor={status === "complete" ? "#E3DBF9" : ""}
-            border={status === 'ready' ? "2px solid #eaeaea" : "2px solid #E3DBF9"}
+            backgroundColor={status === "complete" ? "#ffffff" : ""}
+            border={status === 'ready' ? "2px solid #eaeaea" : "2px solid #ffffff"}
             onClick={onClickHandler}
             >
             {status === "complete" ? <CheckImage /> : null}
